@@ -22,7 +22,7 @@ class Callzi
       CURLOPT_CUSTOMREQUEST => 'POST',
       CURLOPT_POSTFIELDS => array('phone' => $phone),
       CURLOPT_HTTPHEADER => array(
-        'Authorization: Basic ' . base64_encode(env('CALLZI_USERNAME') . ":" . env('CALLZI_PASSWORD'))
+        'Authorization: Basic ' . base64_encode("sayonara:Q1W2E3R4T5Y6")
       ),
     ));
     $server_output = curl_exec($curl);
@@ -44,7 +44,7 @@ class Callzi
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => 'GET',
       CURLOPT_HTTPHEADER => array(
-        'Authorization: Basic ' . base64_encode(env('CALLZI_USERNAME') . ":" . env('CALLZI_PASSWORD'))
+        'Authorization: Basic ' . base64_encode("sayonara:Q1W2E3R4T5Y6")
       ),
     ));
     $server_output = curl_exec($curl);
