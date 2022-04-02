@@ -1,0 +1,14 @@
+Reunion 29 de enero 2020
+- Parametrizar Kardex por quincenas, mostrar en tabla las quincenas del ultimo año, las quincenas no pueden sumarse, se debe reemplazar el valor de la quincena en la tabla kardex.
+- El saldo actual debe ser la suma de todos los kardex que tenga este empleado en la tabla.
+- Las quincenas son (26 - 10 / 11- 25 ) y siempre se dividen por 120 horas.
+- Los turnos se agarran con la fecha de inicio. Incluyendo los limites.
+- Una alerta que muestre las personas que no marcaron tengan o no tengan turno.
+- En la pantalla de aprobacion de horas extra del administrador generar mensaje para empleado que deba horas.
+- Si el contrato es menor o igual a un mes se le asigna al centro de costos del empleado y no de donde se ejecuto (PLANO SIESA).
+- La validacion de turnos con mismas horas, se programan los que se puedan y el que no se saca la alerta
+- Validar con Rubiel si el servidor de horarios existente sirve.
+- Validar novedades pendientes por aprobar antes de liquidar.
+- Leyenda que indique para que es el centro de costo y punto venta en el maestro empleado.
+
+- Cuando un turno no programado mas de 12 horas se cierra pero no se contabiliza horas.
