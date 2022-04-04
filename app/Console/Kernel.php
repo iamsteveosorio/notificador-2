@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
   {
     // $schedule->command('feedbacks:send')->hourly()->timezone('America/Bogota')->between('8:00', '21:00');
     // $schedule->command('feedbacks:send 2')->everyTwoHours();
-    $schedule->command('sales:get')->everyTenMinutes();
+    $schedule->command('sales:get')->everyFiveMinutes();
     // $schedule->command('inspire')
     //          ->hourly();
   }
