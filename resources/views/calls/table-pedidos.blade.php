@@ -41,26 +41,32 @@ $color = 'warning text-white';
           <h5>${{number_format($order->amount,0)}}</h5>
         </div>
         <div class="col-md-3 text-center">
-          @if($order->customer == 'PLATAFORMA' || $order->customer == 'RAPPI' || $order->customer == 'Rappi')
-          @if(!$order->cooked_at)
-          <button type="button" id="ready-button-{{$order->id}}"
-            class="m-btn m-btn--pill btn btn-warning text-uppercase p-4 mr-4" onclick="ready_to_go({{$order->id}})"
-            href="javascript:;" role="button"><i class="fa fa-shipping-fast text-white"
-              style="font-size: 1.6em"></i></button>
-          @endif
-          @else
-          <button type="button" id="call-button-{{$order->id}}"
-            class="m-btn m-btn--pill btn btn-primary text-uppercase p-4 mr-4" onclick="call_order({{$order->id}})"
-            href="javascript:;" role="button"><i class="fa fa-phone-volume text-white"
-              style="font-size: 2em"></i></button>
-          @endif
-          <button type="button" id="delivery-button-{{$order->id}}"
+          @if($order->send_whatsapp < 2) <button type="button" id="whatsapp-button-{{$order->id}}"
             class="m-btn m-btn--pill btn btn-success text-uppercase p-4 mr-4""
+            style=" background-color: {{$order->send_whatsapp == 0 ? '#25D366' : '#D6D6D6'}}; border-color:
+            {{$order->send_whatsapp == 0 ? '#25D366' : '#D6D6D6'}}" onclick="whatsapp_order({{$order->id}})"
+            role="button"><i class="fab	fa-whatsapp text-white" style="font-size: 1.6em"></i></button>
+            @endif
+            @if($order->customer == 'PLATAFORMA' || $order->customer == 'RAPPI' || $order->customer == 'Rappi')
+            @if(!$order->cooked_at)
+            <button type="button" id="ready-button-{{$order->id}}"
+              class="m-btn m-btn--pill btn btn-warning text-uppercase p-4 mr-4" onclick="ready_to_go({{$order->id}})"
+              href="javascript:;" role="button"><i class="fa fa-shipping-fast text-white"
+                style="font-size: 1.6em"></i></button>
+            @endif
+            @else
+            <button type="button" id="call-button-{{$order->id}}"
+              class="m-btn m-btn--pill btn btn-primary text-uppercase p-4 mr-4" onclick="call_order({{$order->id}})"
+              href="javascript:;" role="button"><i class="fa fa-phone-volume text-white"
+                style="font-size: 2em"></i></button>
+            @endif
+            <button type="button" id="delivery-button-{{$order->id}}"
+              class="m-btn m-btn--pill btn btn-success text-uppercase p-4 mr-4""
             style=" background-color: #2ca189; border-color: #2ca189" onclick="delivered_order({{$order->id}})"
-            role="button"><i class="fa fa-check text-white" style="font-size: 1.6em"></i></button>
-          <button type="button" id="delivery-button-{{$order->id}}"
-            class="m-btn m-btn--pill btn btn-focus text-uppercase p-4 mr-4" onclick="manual_call({{$order->id}})"
-            role="button"><i class="fa fa-phone text-white" style="font-size: 1.6em"></i></button>
+              role="button"><i class="fa fa-check text-white" style="font-size: 1.6em"></i></button>
+            <button type="button" id="delivery-button-{{$order->id}}"
+              class="m-btn m-btn--pill btn btn-focus text-uppercase p-4 mr-4" onclick="manual_call({{$order->id}})"
+              role="button"><i class="fa fa-phone text-white" style="font-size: 1.6em"></i></button>
         </div>
       </div>
     </div>

@@ -64,6 +64,7 @@ Route::get('v3', 'TestController@v3')->name('siesa');
 Route::get('delivered/{id}', 'OrdersController@delivered')->name('order.delivered');
 Route::get('ready/{id}', 'OrdersController@ready')->name('order.ready');
 Route::get('call/{id}', 'OrdersController@call')->name('order.call');
+Route::get('whatsapp/{id}', 'OrdersController@send_notification')->name('order.whatsapp');
 Route::post('manual_call', 'OrdersController@manual_call')->name('order.manual_call');
 
 Route::get('wompi', 'WompiController@index')->name('wompi');

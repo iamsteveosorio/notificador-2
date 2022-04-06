@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Call;
 use App\Campaing;
+use App\Core\WhatsApp;
 use App\Http\Utils\Callzi;
 use App\Http\Utils\Utils;
 use App\Order;
@@ -61,6 +62,18 @@ class CallsController extends Controller
       return Redirect::route('calls.campaing', array('point_id' => $data['point_sale_id'], 'id' => $campaing->id));
       // ($response);
     }
+  }
+
+
+  public function send_notification(Request $request, $id)
+  {
+    $campaing = Campaing::find($id);
+    $data = $request->all();
+
+    $whatsapp = new WhatsApp;
+    $response = $whatsapp->send_message('57' . trim($data['phone']), 'message');
+
+    return Redirect::route('calls.campaing', array('point_id' => $data['point_sale_id'], 'id' => $campaing->id));
   }
 
 

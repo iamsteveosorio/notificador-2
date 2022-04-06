@@ -6,6 +6,8 @@
     <h1 class="text-center text-black"><strong>-- {{$point->name}} --</strong></h1>
   </div>
   <div class="col-md-3">
+    <button type="button" class="m-btn m-btn--pill btn btn-focus text-uppercase p-4 mr-4" onclick="manual_call()"
+      role="button"><i class="fa fa-phone text-white" style="font-size: 1.6em"></i></button>
     <a href="{{ route('calls',$campaing->campaing_type_id) }}"
       class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air text-uppercase">
       <span>
@@ -201,6 +203,21 @@
     console.log(btn);
     btn.addClass('m-loader m-loader--right m-loader--danger').attr('disabled', true);
     let url2 = "{{route('order.call',['id'=>'Temp2'])}}";
+    url2 = url2.replace('Temp2',order_id);
+    $.ajax({
+      url: url2,
+      success: function(data) {
+        console.log(data);
+        loadTicketsTable();
+      }
+    });
+  }
+
+  function whatsapp_order(order_id){
+    var btn = $('#whatsapp-button--'+order_id);
+    console.log(btn);
+    btn.addClass('m-loader m-loader--right m-loader--danger').attr('disabled', true);
+    let url2 = "{{route('order.whatsapp',['id'=>'Temp2'])}}";
     url2 = url2.replace('Temp2',order_id);
     $.ajax({
       url: url2,
