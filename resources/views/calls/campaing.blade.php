@@ -6,8 +6,12 @@
     <h1 class="text-center text-black"><strong>-- {{$point->name}} --</strong></h1>
   </div>
   <div class="col-md-3">
-    <button type="button" class="m-btn m-btn--pill btn btn-focus text-uppercase p-4 mr-4" onclick="manual_call()"
-      role="button"><i class="fa fa-phone text-white" style="font-size: 1.6em"></i></button>
+    <button type="button"
+      class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air text-uppercase mr-4"
+      onclick="manual_call()" role="button"><span>
+        <i class="fa fa-phone"></i>
+        <span>llamada manual</span>
+      </span></button>
     <a href="{{ route('calls',$campaing->campaing_type_id) }}"
       class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air text-uppercase">
       <span>
