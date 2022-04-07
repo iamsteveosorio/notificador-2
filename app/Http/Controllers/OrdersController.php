@@ -67,8 +67,8 @@ class OrdersController extends Controller
     $whatsapp = new WhatsApp;
     $_messages = array(
       "Hola {$order->customer}!
-      Soy SAYOBOT, tu asistente virtual, por ahora he aprendido a notificarte cuando tu pedido esta listo, en un futuro te ayudare con más cositas.
-      🏃🏻🏃🏼‍♀️ Ven corriendo, tu pedido esta listo y delicioso esperando por ti (:",
+      </br></br>Soy SAYOBOT, el asistente virtual de SAYONARA, por ahora he aprendido a notificarte cuando tu pedido esta listo, en un futuro te ayudare con más cositas.
+      </br></br>🏃🏻🏃🏼‍♀️ Ven corriendo, tu pedido esta listo y delicioso esperando por ti (:",
       "{$order->customer}, tu pedido se esta triste 😭, ven rápido el 🏃🏻🏃🏼‍♀️",
     );
     $response = $whatsapp->send_message('57' . trim($phone), $_messages[$order->send_whatsapp]);
