@@ -164,7 +164,7 @@ class CallsController extends Controller
 
   public function new_calls_grid($point_id, $id)
   {
-    $this->update_orders_calls($point_id, $id);
+    // $this->update_orders_calls($point_id, $id);
     $query = Order::where('point_sale_id', $point_id)
       // ->where('customer', '!=', 'PLATAFORMA')
       ->where('created_at', '>', Carbon::now()->subMinutes(30)->toDateTimeString())
@@ -178,7 +178,40 @@ class CallsController extends Controller
     $query->orderBy('siesa_date', 'ASC');
     $orders = $query->get();
 
+    $campaing = Campaing::find($id);
+    foreach ($orders as $order) {
+      $this->update_order_call($order, $campaing);
+    }
+
     return view('calls.table-pedidos', compact('point_id', 'orders'));
+  }
+
+
+  public function update_order_call($order, $campaing)
+  {
+    $last_call =  $order->last_call();
+    if ($last_call) {
+      $response = Callzi::get_status($campaing->callzi_id,  $last_call->callzi_id);
+      if ($response) {
+        $last_call->callzi_status = $response['status'];
+        $last_call->order = config('callzi.' . $response['status'] . '_ORDER');
+        $last_call->save();
+      }
+      // RE CALL
+      if (($last_call->callzi_status == 'NOT_CONTACTED'  || $last_call->callzi_status == 'TO_REDIAL') && count($order->calls) < 3 && $order->delivered_at == null) {
+        $callzi = Callzi::call_phone($campaing->callzi_id, $order->phone);
+        if ($callzi['status'] == 201) {
+          $data['order_id'] = $order->id;
+          $data['campaing_id'] = $campaing->callzi_id;
+          $data['phone'] =  $order->phone;
+          $data['callzi_status'] = $callzi['contact']['status'];
+          $data['order'] = config('callzi.' . $callzi['contact']['status'] . '_ORDER');
+          $data['callzi_id'] = $callzi['contact']['id'];
+          $data['attempts'] = 0;
+          $call = Call::create($data);
+        }
+      }
+    }
   }
 
 
