@@ -187,7 +187,7 @@ class CallsController extends Controller
     $campaing = Campaing::find($campaing_id);
     $orders =  Order::where('point_sale_id', $point_id)
       ->where('customer', '!=', 'PLATAFORMA')
-      ->where('created_at', '>', Carbon::now()->subMinutes(50)->toDateTimeString())
+      ->where('created_at', '>', Carbon::now()->subMinutes(30)->toDateTimeString())
       // ->whereDate('created_at', '=', Carbon::now()->toDateString())
       ->whereNull('delivered_at')->get();
     $now = Carbon::now();
