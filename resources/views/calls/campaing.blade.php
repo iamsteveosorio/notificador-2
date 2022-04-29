@@ -124,7 +124,7 @@
 
     var intervalId = window.setInterval(function(){
       loadTicketsTable();
-    }, 50000);
+    }, 30000);
   });
 
   function loadCallsTable(){

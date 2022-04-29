@@ -28,7 +28,7 @@ class TestController extends Controller
       CURLOPT_FOLLOWLOCATION => true,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => 'POST',
-      CURLOPT_POSTFIELDS => array('date' => $now->subHour()->format('Y-m-d H:i:s')),
+      CURLOPT_POSTFIELDS => array('date' => $now->subMinutes(30)->format('Y-m-d H:i:s')),
     ));
 
     $response = json_decode(curl_exec($curl), true);
