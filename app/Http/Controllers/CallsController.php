@@ -167,8 +167,8 @@ class CallsController extends Controller
     $this->update_orders_calls($point_id, $id);
     $query = Order::where('point_sale_id', $point_id)
       // ->where('customer', '!=', 'PLATAFORMA')
-      ->where('created_at', '>', Carbon::now()->subMinutes(50)->toDateTimeString())
-      ->where('created_at', '<=', Carbon::now()->addMinutes(15)->toDateTimeString())
+      ->where('created_at', '>', Carbon::now()->subMinutes(30)->toDateTimeString())
+      // ->where('created_at', '<=', Carbon::now()->addMinutes(15)->toDateTimeString())
       ->whereNull('delivered_at');
     if (request('keyword') != '') {
       $query->where('phone', 'like', "%" . request('keyword') . "%");
