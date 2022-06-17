@@ -145,14 +145,14 @@ class CallsController extends Controller
   public function new_calls_grid($point_id, $id)
   {
     $query = Order::where('point_sale_id', $point_id)
-      ->where('created_at', '>', Carbon::now()->subMinutes(30))
+      ->where('siesa_date', '>', Carbon::now()->subMinutes(15))
       ->whereNull('delivered_at');
     if (request('keyword') != '') {
       $query->where('phone', 'like', "%" . request('keyword') . "%");
       $query->orWhere('customer', 'like', "%" . request('keyword') . "%");
       $query->orWhere('ticket', 'like', "%" . request('keyword') . "%");
     }
-    $query->orderBy('siesa_date', 'ASC');
+    // $query->orderBy('siesa_date', 'ASC');
     $orders = $query->get();
     $campaing = Campaing::find($id);
     foreach ($orders as $order) {
