@@ -115,40 +115,14 @@
   var point = '{{$point_id}}';
   var campaing = '{{$campaing->id}}';
   $(()=>{
-    // loadCallsTable();
-    // var intervalId = window.setInterval(function(){
-    //   loadCallsTable();
-    // }, 30000);
 
     loadTicketsTable();
 
     var intervalId = window.setInterval(function(){
       loadTicketsTable();
-    }, 60000);
+    }, 120000);
   });
 
-  function loadCallsTable(){
-    mApp.block('#m_portlet_table', {
-        overlayColor: '#000000',
-        type: 'loader',
-        state: 'success',
-        message: 'Actualizando llamadas...'
-    });
-
-    let url = "{{route('calls.grid',['point_id'=>'Temp','id'=>'Temp2'])}}";
-    url = url.replace('Temp',point);
-    url = url.replace('Temp2',campaing);
-    $.ajax({
-      url: url,
-      data:{
-        keyword: $('#keyword').val()
-      },
-      success: function(data) {
-        mApp.unblock('#m_portlet_table');
-        $('#calls-grid').html(data);
-      }
-    });
-  }
   function loadTicketsTable(){
     mApp.block('#m_portlet_tickets', {
         overlayColor: '#000000',
