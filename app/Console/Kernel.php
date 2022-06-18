@@ -12,9 +12,6 @@ class Kernel extends ConsoleKernel
    *
    * @var array
    */
-  protected $commands = [
-    Commands\SendFeedbacks::class,
-  ];
 
   /**
    * Define the application's command schedule.
@@ -24,11 +21,7 @@ class Kernel extends ConsoleKernel
    */
   protected function schedule(Schedule $schedule)
   {
-    // $schedule->command('feedbacks:send')->hourly()->timezone('America/Bogota')->between('8:00', '21:00');
-    // $schedule->command('feedbacks:send 2')->everyTwoHours();
     $schedule->command('sales:get')->everyFiveMinutes();
-    // $schedule->command('inspire')
-    //          ->hourly();
   }
 
   /**
