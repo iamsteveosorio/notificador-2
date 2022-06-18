@@ -56,8 +56,8 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('siesa', 'TestController@get_siesa')->name('siesa');
-Route::get('get_siesa_date', 'TestController@get_siesa_date')->name('get_siesa_date');
-Route::get('v3', 'TestController@v3')->name('siesa');
+// Route::get('get_siesa_date', 'TestController@get_siesa_date')->name('get_siesa_date');
+// Route::get('v3', 'TestController@v3')->name('siesa');
 
 
 Route::get('delivered/{id}', 'OrdersController@delivered')->name('order.delivered');
@@ -66,6 +66,6 @@ Route::get('call/{id}', 'OrdersController@call')->name('order.call');
 Route::get('whatsapp/{id}', 'OrdersController@send_notification')->name('order.whatsapp');
 Route::post('manual_call', 'OrdersController@manual_call')->name('order.manual_call');
 
-Route::get('wompi', 'WompiController@index')->name('wompi');
-Route::post('webhook', 'WompiController@webhook')->name('webhook');
-Route::get('wompi_feedback', 'WompiController@wompi_feedback')->name('wompi_feedback');
+// Route::get('wompi', 'WompiController@index')->name('wompi');
+// Route::post('webhook', 'WompiController@webhook')->name('webhook');
+// Route::get('wompi_feedback', 'WompiController@wompi_feedback')->name('wompi_feedback');
