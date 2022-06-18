@@ -120,7 +120,7 @@
 
     var intervalId = window.setInterval(function(){
       loadTicketsTable();
-    }, 120000);
+    }, 60000);
   });
 
   function loadTicketsTable(){
