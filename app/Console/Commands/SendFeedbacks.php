@@ -38,8 +38,8 @@ class SendFeedbacks extends Command
    */
   public function handle()
   {
-    $calls_controller = new OrdersController;
-    $calls_controller::send_feedbacks($type);
+    // $calls_controller = new OrdersController;
+    // $calls_controller::send_feedbacks($type);
     return 0;
   }
 }
