@@ -55,7 +55,6 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('done_order/{id}', 'ReportController@done_order')->name('done_order');
 });
 
-Route::get('feedbacks', 'OrdersController@send_feedbacks')->name('send_feedbacks');
 Route::get('siesa', 'TestController@get_siesa')->name('siesa');
 Route::get('get_siesa_date', 'TestController@get_siesa_date')->name('get_siesa_date');
 Route::get('v3', 'TestController@v3')->name('siesa');
