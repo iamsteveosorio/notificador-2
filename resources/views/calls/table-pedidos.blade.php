@@ -41,12 +41,12 @@ $color = 'warning text-white';
           <h5>${{number_format($order->amount,0)}}</h5>
         </div>
         <div class="col-md-3 text-center">
-          @if($order->send_whatsapp < 2) <button type="button" id="whatsapp-button-{{$order->id}}"
+          {{-- @if($order->send_whatsapp < 2) <button type="button" id="whatsapp-button-{{$order->id}}"
             class="m-btn m-btn--pill btn btn-success text-uppercase p-4 mr-4""
             style=" background-color: {{$order->send_whatsapp == 0 ? '#25D366' : '#D6D6D6'}}; border-color:
             {{$order->send_whatsapp == 0 ? '#25D366' : '#D6D6D6'}}" onclick="whatsapp_order({{$order->id}})"
             role="button"><i class="fab	fa-whatsapp text-white" style="font-size: 1.6em"></i></button>
-            @endif
+            @endif --}}
             @if($order->customer == 'PLATAFORMA' || $order->customer == 'RAPPI' || $order->customer == 'Rappi')
             @if(!$order->cooked_at)
             <button type="button" id="ready-button-{{$order->id}}"
