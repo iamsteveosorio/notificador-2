@@ -19,6 +19,7 @@ class OrdersController extends Controller
       $order->cooked_at = Carbon::now();
     }
     $order->delivered_at = Carbon::now();
+    $order->cooking_time =  $order->delivered_at->diffInMinutes(Carbon::parse($order->siesa_date));
     $order->save();
 
     return response(['order' => $order], 200);
