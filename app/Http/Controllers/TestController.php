@@ -60,4 +60,14 @@ class TestController extends Controller
   {
     return view('calls.v3');
   }
+
+  public function avg()
+  {
+    $now = Carbon::now()->subMinutes(20);
+    $points = PointSale::all();
+    foreach ($points as $p) {
+      $order_avg = (int) Order::where('point_sale_id', $p->id)->where('cooked_at', '>=', $now)->avg('cooking_time');
+      dump($p->name . "----" . $order_avg);
+    }
+  }
 }
