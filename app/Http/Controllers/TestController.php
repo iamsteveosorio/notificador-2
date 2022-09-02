@@ -64,7 +64,7 @@ class TestController extends Controller
 
   public function avg()
   {
-    $now = Carbon::now()->subMinutes(20);
+    $now = Carbon::now()->subMinutes(15);
     $points = PointSale::all();
     foreach ($points as $p) {
       $order_avg = (int) Order::where('point_sale_id', $p->id)->where('cooked_at', '>=', $now)->avg('cooking_time');
