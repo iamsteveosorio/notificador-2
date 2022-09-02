@@ -70,7 +70,7 @@ class TestController extends Controller
       $order_avg = (int) Order::where('point_sale_id', $p->id)->where('cooked_at', '>=', $now)->avg('cooking_time');
       if ($order_avg) {
         $response = Http::put('http://44.208.37.247:8080/api/places/' . $p->idPuntoVenta, ['place' => ['time' => $order_avg]]);
-        dd($response);
+        // dd($response);
       }
       // dump($p->name . "----" . $order_avg);
     }
