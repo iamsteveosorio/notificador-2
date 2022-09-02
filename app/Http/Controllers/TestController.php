@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class TestController extends Controller
 {
@@ -67,7 +68,11 @@ class TestController extends Controller
     $points = PointSale::all();
     foreach ($points as $p) {
       $order_avg = (int) Order::where('point_sale_id', $p->id)->where('cooked_at', '>=', $now)->avg('cooking_time');
-      dump($p->name . "----" . $order_avg);
+      if ($order_avg) {
+        $response = Http::put('http://44.208.37.247:8080/api/places/' . $p->idPuntoVenta, ['place' => ['time' => $order_avg]]);
+        dd($response);
+      }
+      // dump($p->name . "----" . $order_avg);
     }
   }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class PointSale extends Model
 {
   protected $table = 'point_sales';
-  protected $fillable = ['city', 'code', 'name', 'address', 'service_id', 'restaurant_id', 'costumer_service', 'owner_delivery', 'platform_delivery', 'breakfast_sale'];
+  protected $fillable = ['city', 'code', 'name', 'address', 'service_id', 'restaurant_id', 'costumer_service', 'owner_delivery', 'platform_delivery', 'breakfast_sale', 'idPuntoVenta'];
 
   public function restaurant()
   {
